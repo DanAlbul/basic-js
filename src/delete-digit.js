@@ -11,6 +11,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For n = 152, the output should be 52
  *
  */
+
 function deleteDigit(n) {
 	let numberString = '' + n;
 	let max = 0;
