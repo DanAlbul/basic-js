@@ -57,9 +57,9 @@ class VigenereCipheringMachine {
 		return output.toUpperCase();
 	}
 
-	decrypt() {
-		throw new NotImplementedError('Not implemented');
-		// remove line with error and write your code here
+	decrypt(message, key) {
+		if (message === undefined || key === undefined || !message || !key)
+			throw new Error('Incorrect arguments!');
 	}
 
 	filterKey(key) {
