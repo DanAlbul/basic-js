@@ -54,7 +54,7 @@ class VigenereCipheringMachine {
 				output += char;
 			}
 		}
-		return output.toUpperCase();
+		return output.toUpperCase()
 	}
 
 	decrypt(message, key) {

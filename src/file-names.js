@@ -15,23 +15,24 @@ const { NotImplementedError } = require('../extensions/index.js');
  * the output should be ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
  *
  */
-function renameFiles(names) {
+
 function renameFiles(names) {
   const files = {}
   names.forEach(name => {
     files[name] = (files[name] || 0 ) + 1
   })
-  const unique = Array.from(new Set(names))
-  const uniqueRename = (file, quantity) => {
-    return Array(quantity).fill('').map((el, i) => el === file ? file : `${file}(${i+1})`)
-  }
+  const res = []
+  names.forEach(name => {
+    if(files[name] > 1) {
+      res.push(`${name}(${files[name] - 1})`)
+      files[`${name}(${files[name] - 1})`] = (files[`${name}(${files[name] - 1})`] || 0 ) + 1
+    } else {
+      res.push(name)
+    }
+  })
+  return res
+}
 
-  const newFiles = Array.from(Object.entries(files).map(([k, v]) => {
-    return uniqueRename(k, v);
-  }))
-  return newFiles
-}
-}
 
 module.exports = {
   renameFiles
